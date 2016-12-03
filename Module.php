@@ -29,6 +29,7 @@ class Module extends \yii\base\Module {
     public $cache = 'cache';
     /* Storage*/
     public $storage_web = false;
+    
 
     /**
      * @var array 
