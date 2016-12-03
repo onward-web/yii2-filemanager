@@ -44,10 +44,6 @@ return [
             'filemanager' => [
                 'class' => 'dpodium\filemanager\Module',
                 'storage' => ['local'],
-			 'storage_web' => [
-              		'protocol' => 'https://',
-              		'domain'  => storage.site.com'
-            	],
                 // This configuration will be used in 'filemanager/files/upload'
                 // To support dynamic multiple upload
                 // Default multiple upload is true, max file to upload is 10

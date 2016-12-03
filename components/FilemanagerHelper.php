@@ -83,10 +83,7 @@ class FilemanagerHelper {
            }
            /* Storage end */
            
-            echo '<pre>';
-            print_r($file);
-            echo '</pre>';
-            
+                       
         }
         
        
