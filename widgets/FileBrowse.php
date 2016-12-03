@@ -88,6 +88,13 @@ class FileBrowse extends \yii\widgets\InputWidget {
             } else {
                 $src = $file->object_url . $file->src_file_name;
             }
+            
+            /* Storage*/
+            if(\Yii::$app->getModule('filemanager')->storage_web != false){                 
+                $src = \Yii::$app->getModule('filemanager')->storage_web['protocol'] . \Yii::$app->getModule('filemanager')->storage_web['domain'] . $src;
+            }
+            /* Storage end */
+            
             $gridBox = new \dpodium\filemanager\components\GridBox([
                 'owner' => $this,
                 'src' => $src,

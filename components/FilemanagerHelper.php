@@ -23,7 +23,7 @@ class FilemanagerHelper {
 
         $module = \Yii::$app->getModule('filemanager');
         $cacheKey = 'files' . '/' . $key . '/' . $value;
-
+        /*
         if (isset($module->cache)) {
             if (is_string($module->cache) && strpos($module->cache, '\\') === false) {
                 $cache = \Yii::$app->get($module->cache, false);
@@ -34,7 +34,7 @@ class FilemanagerHelper {
             if ($file = $cache->get($cacheKey)) {
                 return $file;
             }
-        }
+        }*/
 
         $model = new $module->models['files'];
         $fileObject = $model->find()->where([$key => $value])->one();
@@ -49,8 +49,12 @@ class FilemanagerHelper {
             if (isset($module->storage['s3']['cdnDomain']) && !empty($module->storage['s3']['cdnDomain'])) {
                 $domain = $module->storage['s3']['cdnDomain'] . "/{$fileObject->storage_id}/{$fileObject->url}/";
             }
+            
+            
             $src = $file['img_src'] = $domain . $fileObject->src_file_name;
             $file['img_thumb_src'] = $domain . $fileObject->thumbnail_name;
+            
+            
             if ($thumbnail && !is_null($fileObject->dimension)) {
                 $src = $domain . $fileObject->thumbnail_name;
             }
@@ -66,13 +70,42 @@ class FilemanagerHelper {
                     }
                 }
             }
+            
+            
+            
+            /* Storage*/
+            if(\Yii::$app->getModule('filemanager')->storage_web != false){                 
+                echo $file['img_src'] = \Yii::$app->getModule('filemanager')->storage_web['protocol'] . \Yii::$app->getModule('filemanager')->storage_web['domain'] . $file['img_src'];
+            }
+        
+            if(\Yii::$app->getModule('filemanager')->storage_web != false){                 
+               $file['img_thumb_src'] = \Yii::$app->getModule('filemanager')->storage_web['protocol'] . \Yii::$app->getModule('filemanager')->storage_web['domain'] . $file['img_thumb_src'];
+           }
+           /* Storage end */
+           
+            echo '<pre>';
+            print_r($file);
+            echo '</pre>';
+            
         }
+        
+       
 
         if ($file !== null && isset($cache)) {
             $cache->set($cacheKey, $file, 86400, new \yii\caching\TagDependency([
                 'tags' => self::CACHE_TAG
             ]));
         }
+        
+     
+        
+        
+        
+                   
+       
+        
+        
+        
 
         return $file;
     }

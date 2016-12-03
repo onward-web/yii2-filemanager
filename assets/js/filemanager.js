@@ -103,7 +103,7 @@ var gridBox = function () {
     var FilemanagerBrowse = function (element, options) {
         var self = $browse = this;
         self.element = $(element);
-        self.multiple = options.multiple;
+        self.multiple = options.multiple;        
         self.maxFileCount = options.maxFileCount;
         self.folderId = options.folderId;
 
@@ -136,7 +136,7 @@ var gridBox = function () {
 
             if (tabId === '#fm-upload-tab') {
                 postData = {
-                    multiple: this.multiple,
+                    multiple: this.multiple,                     
                     maxFileCount: this.maxFileCount,
                     folderId: this.folderId
                 };

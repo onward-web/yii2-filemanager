@@ -8,7 +8,6 @@ use yii\helpers\BaseFileHelper;
 class Module extends \yii\base\Module {
 
     public $directory = '@webroot';
-
     /**
      * @var array 
      * 
@@ -28,6 +27,8 @@ class Module extends \yii\base\Module {
      */
     public $storage = ['local'];
     public $cache = 'cache';
+    /* Storage*/
+    public $storage_web = false;
 
     /**
      * @var array 

@@ -87,6 +87,14 @@ class Gallery extends BaseListView {
     }
 
     public function renderGridBox($src, $fileType, $toolArray) {
+        
+        /* Storage*/
+        if(\Yii::$app->getModule('filemanager')->storage_web != false){                 
+            $src = \Yii::$app->getModule('filemanager')->storage_web['protocol'] . \Yii::$app->getModule('filemanager')->storage_web['domain'] . $src;
+        }
+        /* Storage end */
+        
+        
         $gridBox = new GridBox([
             'owner' => $this,
             'src' => $src,
