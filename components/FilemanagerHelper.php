@@ -75,7 +75,7 @@ class FilemanagerHelper {
             
             /* Storage*/
             if(\Yii::$app->getModule('filemanager')->storage_web != false){                 
-                echo $file['img_src'] = \Yii::$app->getModule('filemanager')->storage_web['protocol'] . \Yii::$app->getModule('filemanager')->storage_web['domain'] . $file['img_src'];
+                $file['img_src'] = \Yii::$app->getModule('filemanager')->storage_web['protocol'] . \Yii::$app->getModule('filemanager')->storage_web['domain'] . $file['img_src'];
             }
         
             if(\Yii::$app->getModule('filemanager')->storage_web != false){                 
