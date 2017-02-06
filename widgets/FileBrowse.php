@@ -20,6 +20,7 @@ class FileBrowse extends \yii\widgets\InputWidget {
      * Set TRUE if allow upload multiple files
      */
     public $multiple = false;
+    public $multiselect = false;
     public $folderId = 0;
 
     /**
@@ -60,6 +61,7 @@ class FileBrowse extends \yii\widgets\InputWidget {
         $fileContent = $this->renderFileContent();
         $opts = \yii\helpers\Json::encode([
                     'multiple' => $this->multiple,
+                    'multiselect' => $this->multiselect,
                     'maxFileCount' => $this->maxFileCount,
                     'folderId' => $this->folderId,
         ]);
